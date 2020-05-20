@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<!--
+ ========================================================================
+
+ Copyright (c) 2013-2019 Unpublished Work of NetIQ Corporation. All Rights Reserved.
+
+ THIS WORK IS AN UNPUBLISHED WORK AND CONTAINS CONFIDENTIAL,
+ PROPRIETARY AND TRADE SECRET INFORMATION OF NETIQ CORPORATION. ACCESS TO
+ THIS WORK IS RESTRICTED TO (I) NETIQ CORPORATION. EMPLOYEES WHO HAVE A NEED
+ TO KNOW HOW TO PERFORM TASKS WITHIN THE SCOPE OF THEIR ASSIGNMENTS AND
+ (II) ENTITIES OTHER THAN NETIQ CORPORATION. WHO HAVE ENTERED INTO
+ APPROPRIATE LICENSE AGREEMENTS. NO PART OF THIS WORK MAY BE USED,
+ PRACTICED, PERFORMED, COPIED, DISTRIBUTED, REVISED, MODIFIED,
+ TRANSLATED, ABRIDGED, CONDENSED, EXPANDED, COLLECTED, COMPILED,
+ LINKED, RECAST, TRANSFORMED OR ADAPTED WITHOUT THE PRIOR WRITTEN
+ CONSENT OF NETIQ CORPORATION. ANY USE OR EXPLOITATION OF THIS WORK WITHOUT
+ AUTHORIZATION COULD SUBJECT THE PERPETRATOR TO CRIMINAL AND CIVIL
+ LIABILITY.
+
+ ========================================================================
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.sf</groupId>
+	<artifactId>statsvn</artifactId>
+	<version>0.8.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>StatSVN</name>
+    <description>Generates statistics from a Subversion repository log</description>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+          <groupId>statcvs</groupId>
+          <artifactId>statcvs</artifactId>
+          <version>0.7.0</version>
+        </dependency>
+<!--
+        <dependency>
+          <groupId>statcvs</groupId>
+          <artifactId>statcvs-xml</artifactId>
+          <version>0.9.7</version>
+        </dependency>
+-->
+        <dependency>
+          <groupId>org.tmatesoft.svnkit</groupId>
+          <artifactId>svnkit</artifactId>
+          <version>1.10.1</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.5.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.9</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>2.2.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>ASCII</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <distributionManagement>
+
+        <!-- Publish the versioned releases here -->
+        <repository>
+            <id>nexus</id>
+            <name>Nexus Release Repo</name>
+            <url>http://nexus.idmapps.nqbuild.lab/nexus/content/repositories/releases</url>
+        </repository>
+
+        <!-- Publish the snapshot releases here -->
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>Nexus Snapshot Repo</name>
+            <url>http://nexus.idmapps.nqbuild.lab/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+
+    </distributionManagement>
+</project>
